@@ -372,3 +372,8 @@ class MRGCModel:
             self.percent_dog_l_yellow,
             self.percent_dog_m_yellow,
         )
+
+def main():
+    """Build the mRGC model and print reference outputs."""
+    model = MRGCModel()
+    model.print_reference_outputs()
