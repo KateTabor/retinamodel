@@ -13,6 +13,7 @@ import zarr
 from tqdm import tqdm
 
 from retinamodel.mrgc import MRGCModel
+from retinamodel.reporting import format_stimulus_report
 
 GRAY_TOL = 1e-6
 
@@ -846,6 +847,4 @@ def main():
     result = export_retina_dataset(config)
 
     print()
-    print(f"Dataset saved to: {result['export_dir']}")
-    print(f"Unique stimuli: {result['summary']['n_total_unique']}")
-    print(f"Redundant stimuli removed: {result['summary']['n_redundant']}")
+    print(format_stimulus_report(result))

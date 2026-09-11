@@ -2,6 +2,8 @@
 
 import numpy as np
 
+from retinamodel.reporting import format_mrgc_report
+
 # Parameters
 LUT = {
     "wavelength_nm": np.arange(390, 701, 5),
@@ -376,4 +378,4 @@ class MRGCModel:
 def main():
     """Build the mRGC model and print reference outputs."""
     model = MRGCModel()
-    model.print_reference_outputs()
+    print(format_mrgc_report(model))
