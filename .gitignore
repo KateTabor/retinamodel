@@ -15,5 +15,10 @@ wheels/
 # Jupyter
 .ipynb_checkpoints/
 
-# Large data outputs
+# Generated data outputs
+data/interm/*
+!data/interm/.gitkeep
 *.zarr/
+
+# Legacy notebook exports
+export_retina_*/
