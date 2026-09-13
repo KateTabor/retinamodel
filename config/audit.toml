@@ -1,0 +1,34 @@
+[audit]
+
+# Which object labels to include.
+# Choose any subset of: gray_d, gray_l, red, green, blue, yellow
+LABELS = ["gray_d", "gray_l", "red", "green", "blue", "yellow"]
+
+# Which background hues to include.
+BG_HUES = ["gray", "red", "yellow", "blue", "green"]
+
+# Reproducible randomization of images that still require human labeling.
+RANDOM_SEED = 14
+
+# Optional signed difference filters.
+# delta = background - object
+FILTER_DELTA_INT = false
+DELTA_INT_MIN = -1.0
+DELTA_INT_MAX = 1.0
+
+FILTER_DELTA_SAT = false
+DELTA_SAT_MIN = -1.0
+DELTA_SAT_MAX = 1.0
+
+
+[gallery]
+
+# Code label to display in the gallery.
+TARGET_LABEL = "red"
+
+# Gallery layout.
+N_COLS = 6
+
+# Optional PNG export.
+SAVE_PNG = false
+DPI = 200

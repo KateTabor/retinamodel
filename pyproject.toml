@@ -20,6 +20,7 @@ dependencies = [
 retinamodel = "retinamodel:main"
 mrgc = "retinamodel.mrgc:main"
 stimulus = "retinamodel.stimulus:main"
+audit = "retinamodel.audit_cli:main"
 
 [build-system]
 requires = ["uv_build>=0.12.5,<0.13.0"]

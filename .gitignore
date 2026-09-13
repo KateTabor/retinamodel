@@ -22,3 +22,23 @@ data/interm/*
 
 # Legacy notebook exports
 export_retina_*/
+
+# Raw experimental data
+data/raw/*
+!data/raw/.gitkeep
+
+# Processed analysis and model outputs
+data/processed/*
+!data/processed/.gitkeep
+
+# Trained model files
+models/*
+!models/.gitkeep
+
+# Raw experimental data
+data/raw/*
+!data/raw/.gitkeep
+
+# Processed analysis and model outputs
+data/processed/*
+!data/processed/.gitkeep
