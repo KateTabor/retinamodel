@@ -2355,8 +2355,11 @@ def plot_stimulus_gallery(
             "%Y%m%d_%H%M%S"
         )
 
+        figures_dir = Path("figures")
+        figures_dir.mkdir(parents=True, exist_ok=True)
+
         png_path = (
-            dataset.dataset_dir
+            figures_dir
             / (
                 f"gallery_"
                 f"{gallery_config.target_label}_"

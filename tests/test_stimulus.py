@@ -1,7 +1,10 @@
 from dataclasses import asdict
+from types import SimpleNamespace
 
 import numpy as np
 import zarr
+
+import retinamodel.stimulus as stimulus_module
 
 from retinamodel.stimulus import (
     RESPONSE_KEYS,
@@ -98,3 +101,49 @@ def test_export_retina_dataset(tmp_path):
     assert root["imgs"].shape == (n_stimuli, 30, 30, 3)
     assert root["outs"].shape == (n_stimuli, len(RESPONSE_KEYS), 30, 30)
     assert tuple(root.attrs["RESPONSE_KEYS"]) == RESPONSE_KEYS
+
+
+def test_h2_arithmetic_preserves_notebook_grouping(monkeypatch):
+    """H2 responses preserve the notebook's floating-point grouping."""
+
+    def identity_fft(image, kernel):
+        return np.asarray(image, dtype=float)
+
+    monkeypatch.setattr(
+        stimulus_module,
+        "fft_2d",
+        identity_fft,
+    )
+
+    model = SimpleNamespace(
+        gaussian_center=np.array([[1.0]]),
+        gaussian_surround=np.array([[1.0]]),
+        scalar_l=1.0,
+        scalar_m=1.0,
+        scalar_s=1.0,
+        scalar_lms=1.0,
+        scalar_s_inhib_lm=1.0,
+    )
+
+    image = np.array(
+        [[[1.0, 0.0, 0.0]]],
+        dtype=float,
+    )
+
+    rgb2q_weights = {
+        "L": np.array([1e16, 0.0, 0.0]),
+        "M": np.array([1e16, 0.0, 0.0]),
+        "S": np.array([1e16, 0.0, 0.0]),
+        "LM_sur": np.array([1.0, 0.0, 0.0]),
+        "LMS_sur": np.array([1.0, 0.0, 0.0]),
+        "LM_inhib_center": np.array([0.0, 0.0, 0.0]),
+    }
+
+    responses = stimulus_module.run_mrgc_model(
+        image,
+        model,
+        rgb2q_weights,
+    )
+
+    assert responses["l_h2_on"][0, 0] == 0.0
+    assert responses["m_h2_on"][0, 0] == 0.0

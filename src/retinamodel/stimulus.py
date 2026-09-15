@@ -418,15 +418,17 @@ def run_mrgc_model(img_rgb, model, rgb2q_weights):
     l_h2_on = (
         model.scalar_l * center_l
         + model.scalar_lms * surround_lms
-        - model.scalar_s * center_s
-        - surround_lm
+    ) - (
+        model.scalar_s * center_s
+        + surround_lm
     )
 
     m_h2_on = (
         model.scalar_m * center_m
         + model.scalar_lms * surround_lms
-        - model.scalar_s * center_s
-        - surround_lm
+    ) - (
+        model.scalar_s * center_s
+        + surround_lm
     )
 
     l_h2_off = -l_h2_on

@@ -1,0 +1,22 @@
+[extrema]
+SIGMA_PX = 0.5
+AMP_THRESH = 0.0
+GRAD_TOL_FRAC = 0.7
+CURV_TOL_FRAC = 0.20
+
+[fill]
+# "none" means fill everywhere; otherwise use a positive integer radius in pixels.
+FILLRADIUS = "none"
+BEYONDRADIUS = false
+
+[viewer]
+OBJ_LABEL = "green"
+BG_LABEL = "gray"
+
+RESP_CMAP = "berlin"
+USE_FIXED_SCALE = true
+VMIN = -5e7
+VMAX = 5e7
+
+N_COLS = 3
+DPI = 200

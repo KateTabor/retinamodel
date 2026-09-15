@@ -35,6 +35,9 @@ data/processed/*
 models/*
 !models/.gitkeep
 
+# Generated figures
+figures/*.png
+
 # Raw experimental data
 data/raw/*
 !data/raw/.gitkeep

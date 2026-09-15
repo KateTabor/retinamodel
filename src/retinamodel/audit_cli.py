@@ -202,6 +202,9 @@ def _show_gallery(args):
         args.config
     )
 
+    if args.save_png:
+        gallery_config.save_png = True
+
     dataset = load_audit_dataset(
         args.dataset
     )
@@ -343,6 +346,12 @@ def build_parser():
         "--config",
         default=DEFAULT_CONFIG,
         help="Path to audit.toml.",
+    )
+
+    gallery_parser.add_argument(
+    "--save-png",
+    action="store_true",
+    help="Save the gallery PNG to figures/.",
     )
 
     gallery_parser.set_defaults(
