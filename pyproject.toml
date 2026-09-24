@@ -1,17 +1,20 @@
 [project]
 name = "retinamodel"
 version = "0.1.0"
-description = "Add your description here"
+description = "A computational framework for testing which retinal circuits best support human-like color judgments across changing scenes."
 readme = "README.md"
 authors = [
     { name = "Kate Tabor", email = "kate.tabor@gmail.com" }
 ]
 requires-python = ">=3.13"
 dependencies = [
+    "joblib>=1.6.0",
     "matplotlib>=3.11.1",
     "numpy>=2.5.2",
     "pandas>=3.0.5",
+    "scikit-learn>=1.9.1",
     "scipy>=1.18.1",
+    "torch>=2.14.0",
     "tqdm>=4.70.0",
     "zarr>=3",
 ]
@@ -22,6 +25,7 @@ mrgc = "retinamodel.mrgc:main"
 stimulus = "retinamodel.stimulus:main"
 audit = "retinamodel.audit_cli:main"
 retina-response = "retinamodel.retina_model_cli:main"
+classifier-data = "retinamodel.classifier_data_cli:main"
 
 [build-system]
 requires = ["uv_build>=0.12.5,<0.13.0"]

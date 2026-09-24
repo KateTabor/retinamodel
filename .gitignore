@@ -45,3 +45,7 @@ data/raw/*
 # Processed analysis and model outputs
 data/processed/*
 !data/processed/.gitkeep
+
+# Generated notebook classifier outputs
+notebooks/cnn_baseline_artifacts/
+notebooks/svm_mlr_rf_eval_batch_*/

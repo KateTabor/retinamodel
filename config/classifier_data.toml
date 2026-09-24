@@ -1,0 +1,48 @@
+# Shared classifier-data configuration.
+# Paths are relative to the repository root.
+
+[paths]
+source_dataset_dir = "data/interm/retina_dataset_20260914_204401"
+retina_model_dir = "data/interm/retina_model_20260914_205215"
+
+# Relative class-sampling weights. They do not need to sum to 100.
+# A weight of 0 excludes that class from the classifier experiment.
+[class_weights]
+gray_d = 25.0
+gray_l = 25.0
+red = 12.5
+green = 12.5
+blue = 12.5
+yellow = 12.5
+
+# Shared split settings used by every classifier.
+# Add more seeds to repeat the experiment with additional shared splits.
+[split]
+train_fraction = 0.70
+validation_fraction = 0.15
+test_fraction = 0.15
+seeds = [12]
+intensity_bins = 3
+saturation_bins = 3
+balance_background_hue = true
+
+# Spatial input sizes prepared on demand from the same shared stimulus IDs.
+# "full" keeps the original response-map resolution; integers request square resized maps.
+[inputs]
+sizes = ["full", 256]
+
+# Lightweight reproducibility records are written here in timestamped run folders.
+[output]
+root_dir = "data/interm"
+
+# Retinal-response groups available to all classifiers.
+# Each group may contain any non-empty combination of channels present in RESPONSE_KEYS.
+[channel_groups]
+Classic4 = ["l_on", "l_off", "m_on", "m_off"]
+Classic4_plus_s = ["l_on", "l_off", "m_on", "m_off", "s_on"]
+Neitz4 = ["l_h2_on", "m_h2_on", "l_h2_off", "m_h2_off"]
+Neitz8 = ["l_on", "l_off", "m_on", "m_off", "l_h2_on", "m_h2_on", "l_h2_off", "m_h2_off"]
+All9 = ["l_on", "l_off", "m_on", "m_off", "l_h2_on", "m_h2_on", "l_h2_off", "m_h2_off", "s_on"]
+
+# Example custom group:
+# Off2 = ["l_off", "m_off"]
